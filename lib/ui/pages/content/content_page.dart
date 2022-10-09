@@ -27,10 +27,19 @@ class ContentPage extends GetView<LocationController> {
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: ElevatedButton(
                       onPressed: () async {
-                        // TODO: 1. Obten la ubicacion actual con gpsController.currentLocation
-                        // TODO: 2. Obten la precision de la lectura con gpsController.locationAccuracy.
-                        // TODO: 3. Crea un objeto [TrackedLocation] con fecha actual [DateTime.now] y la precisio como texto [accuracy.name]
-                        // TODO: 4. con el [controller] guarda ese objeto [saveLocation]
+                        // TO DO: 1. Obten la ubicacion actual con gpsController.currentLocation
+                        final location = await gpsController.currentLocation;
+                        // TO DO: 2. Obten la precision de la lectura con gpsController.locationAccuracy.
+                        final accuracy = await gpsController.locationAccuracy;
+                        // TO DO: 3. Crea un objeto [TrackedLocation] con fecha actual [DateTime.now] y la precisio como texto [accuracy.name]
+                        final trackedLocation = TrackedLocation(
+                          latitude: location.latitude,
+                          longitude: location.longitude,
+                          timestamp: DateTime.now(),
+                          precision: accuracy.name,
+                        );
+                        // TO DO: 4. con el [controller] guarda ese objeto [saveLocation]
+                        controller.saveLocation(location: trackedLocation);
                       },
                       child: const Text("Registrar Ubicacion"),
                     ),
@@ -55,7 +64,8 @@ class ContentPage extends GetView<LocationController> {
                                   'Fecha: ${location.timestamp.toIso8601String()}\n${location.precision.toUpperCase()}'),
                               trailing: IconButton(
                                 onPressed: () {
-                                  // TODO: elimina la ubicacion [location] usando el controlador [deleteLocation]
+                                  // TO DO: elimina la ubicacion [location] usando el controlador [deleteLocation]
+                                  controller.deleteLocation(location: location);
                                 },
                                 icon: const Icon(
                                   Icons.delete_forever_rounded,
@@ -74,7 +84,8 @@ class ContentPage extends GetView<LocationController> {
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: ElevatedButton(
                       onPressed: () async {
-                        // TODO: elimina todas las ubicaciones usando el controlador [deleteAll]
+                        // TO DO: elimina todas las ubicaciones usando el controlador [deleteAll]
+                        controller.deleteAll();
                       },
                       child: const Text("Eliminar Todos"),
                     ),

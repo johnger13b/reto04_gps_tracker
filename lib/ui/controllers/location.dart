@@ -14,21 +14,25 @@ class LocationController extends GetxController {
   Future<void> saveLocation({
     required TrackedLocation location,
   }) async {
-    /* TODO: Usa [LocationManager] para guardar [save] la ubicacion [location] */
+    /* TO DO: Usa [LocationManager] para guardar [save] la ubicacion [location] */
+    LocationManager.save(location: location);
   }
 
   Future<List<TrackedLocation>> getAll({
     String? orderBy,
   }) async {
-    /* TODO: Usa [getAll] de [LocationManager] para obtener la lista de ubicaciones guardadas y retornalas */
+    /* TO DO: Usa [getAll] de [LocationManager] para obtener la lista de ubicaciones guardadas y retornalas */
+    return LocationManager.getAll();
   }
 
   Future<void> updateLocation({required TrackedLocation location}) async {
-    /* TODO: Usa [LocationManager.update] para actualizar la ubicacion y luego obten todas las ubicaciones de nuevo */
+    /* TO DO: Usa [LocationManager.update] para actualizar la ubicacion y luego obten todas las ubicaciones de nuevo */
+    LocationManager.update(location: location);
   }
 
   Future<void> deleteLocation({required TrackedLocation location}) async {
-    /* TODO: Con [LocationManager.delete] elimina la ubicacion y luego usa [removeWhere] para eliminar la ubicacion de [_locations.value] usando [_locations.update de GetX] */
+    /* TO DO: Con [LocationManager.delete] elimina la ubicacion y luego usa [removeWhere] para eliminar la ubicacion de [_locations.value] usando [_locations.update de GetX] */
+    LocationManager.delete(location: location);
     /* TODO: Ejemplo [https://github.com/jonataslaw/getx/blob/master/documentation/en_US/state_management.md]
       final user = User().obs;
 
@@ -37,9 +41,14 @@ class LocationController extends GetxController {
       user.age = 18;
       });
      */
+    _locations.update((val) {
+      _locations.value.removeWhere((element) => element.uuid == location.uuid);
+    });
   }
 
   Future<void> deleteAll() async {
-    /* TODO: Con [LocationManager.deleteAll] elimina todas las ubicaciones guardas y asigna una lista vacia a [_locations.value] */
+    /* TO DO: Con [LocationManager.deleteAll] elimina todas las ubicaciones guardas y asigna una lista vacia a [_locations.value] */
+    LocationManager.deleteAll();
+    _locations.value = [];
   }
 }
