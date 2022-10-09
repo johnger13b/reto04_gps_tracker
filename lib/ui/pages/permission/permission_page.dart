@@ -43,7 +43,7 @@ class _LocationState extends State<PermissionPage> {
                       (_) => Get.offAll(() => ContentPage()),
                     ),
                   );
-              /* TODO: Busca el controlador de ubicacion [LocationController] con [Get.find],
+              /* TO DO: Busca el controlador de ubicacion [LocationController] con [Get.find],
                inicializalo [initialize] y cuando el futuro se complete [then] usando [WidgetsBinding.instance.addPostFrameCallback]
                navega usando [Get.offAll] a [ContentPage] */
 
