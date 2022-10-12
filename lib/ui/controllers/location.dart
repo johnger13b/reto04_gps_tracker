@@ -15,8 +15,9 @@ class LocationController extends GetxController {
     required TrackedLocation location,
   }) async {
     /* TO DO: Usa [LocationManager] para guardar [save] la ubicacion [location] */
-    LocationManager.save(location: location);
-    _locations.value = await LocationManager.getAll();
+    await LocationManager.save(location: location);
+    //_locations.value = await LocationManager.getAll();
+    _locations.update((_) => _locations.value.add(location));
   }
 
   Future<List<TrackedLocation>> getAll({
