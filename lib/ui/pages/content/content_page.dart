@@ -1,13 +1,42 @@
 import 'package:f_gps_tracker/domain/models/location.dart';
 import 'package:f_gps_tracker/ui/controllers/gps.dart';
 import 'package:f_gps_tracker/ui/controllers/location.dart';
+import 'package:f_gps_tracker/ui/my_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'map_sample.dart';
 
 class ContentPage extends GetView<LocationController> {
   late final GpsController gpsController = Get.find();
 
   ContentPage({super.key});
+
+  void displayDialogMap(BuildContext context, double lat, double long) {
+    // El método showDialog necesita el context del widget padre, por eso se pasa
+    // como parámetro. También se pasan las coordenadas
+    showDialog(
+      barrierDismissible: false, // Cerrar al hacer clic por fuera (true)
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          elevation: 10,
+          title: const Text('Su Ubicación'),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          content: MapSample(lat: lat, lon: long),
+          actions: [
+            ElevatedButton.icon(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.close),
+              label: const Text('Cerrar'),
+            )
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +83,23 @@ class ContentPage extends GetView<LocationController> {
                           return Card(
                             child: ListTile(
                               isThreeLine: true,
-                              leading: Icon(
-                                Icons.gps_fixed_rounded,
-                                color: Colors.amber[300],
+                              leading: TextButton.icon(
+                                // Botón que abre el alert con el mapa y la ubicación
+                                icon: const Icon(Icons.gps_fixed_rounded),
+                                style: TextButton.styleFrom(
+                                  backgroundColor: MyTheme.secondaryColor,
+                                  foregroundColor: MyTheme.lightPrimaryColor,
+                                ),
+                                onPressed: () {
+                                  // Llamo al método que muestra el modal con el mapa, le envío el
+                                  // build context, y las coordenadas
+                                  return displayDialogMap(
+                                    context,
+                                    location.latitude,
+                                    location.longitude,
+                                  );
+                                },
+                                label: const Text('Ver'),
                               ),
                               title: Text(
                                   '${location.latitude}, ${location.longitude}'),

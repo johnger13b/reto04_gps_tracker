@@ -34,7 +34,7 @@ class LocationController extends GetxController {
   Future<void> deleteLocation({required TrackedLocation location}) async {
     /* TO DO: Con [LocationManager.delete] elimina la ubicacion y luego usa [removeWhere] para eliminar la ubicacion de [_locations.value] usando [_locations.update de GetX] */
     LocationManager.delete(location: location);
-    /* TODO: Ejemplo [https://github.com/jonataslaw/getx/blob/master/documentation/en_US/state_management.md]
+    /* TO DO: Ejemplo [https://github.com/jonataslaw/getx/blob/master/documentation/en_US/state_management.md]
       final user = User().obs;
 
       user.update( (user) {

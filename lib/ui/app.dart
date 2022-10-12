@@ -1,3 +1,4 @@
+import 'package:f_gps_tracker/ui/my_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
@@ -9,10 +10,9 @@ class GpsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'GPS Tracker',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: MyTheme.theme,
       home: const PermissionPage(),
     );
   }
