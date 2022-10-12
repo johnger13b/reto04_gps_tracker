@@ -4,6 +4,7 @@ import 'package:f_gps_tracker/ui/controllers/location.dart';
 import 'package:f_gps_tracker/ui/my_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import 'map_sample.dart';
 
@@ -40,6 +41,8 @@ class ContentPage extends GetView<LocationController> {
 
   @override
   Widget build(BuildContext context) {
+    final DateFormat myDateFormat = DateFormat('dd/MMM/yyyy - h:mm:ss a');
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("GPS Tracker"),
@@ -70,7 +73,7 @@ class ContentPage extends GetView<LocationController> {
                         // TO DO: 4. con el [controller] guarda ese objeto [saveLocation]
                         controller.saveLocation(location: trackedLocation);
                       },
-                      child: const Text("Registrar Ubicacion"),
+                      child: const Text("Registrar Ubicación"),
                     ),
                   ),
                   Expanded(
@@ -88,7 +91,7 @@ class ContentPage extends GetView<LocationController> {
                                 icon: const Icon(Icons.gps_fixed_rounded),
                                 style: TextButton.styleFrom(
                                   backgroundColor: MyTheme.secondaryColor,
-                                  foregroundColor: MyTheme.lightPrimaryColor,
+                                  foregroundColor: MyTheme.white,
                                 ),
                                 onPressed: () {
                                   // Llamo al método que muestra el modal con el mapa, le envío el
@@ -102,9 +105,17 @@ class ContentPage extends GetView<LocationController> {
                                 label: const Text('Ver'),
                               ),
                               title: Text(
-                                  '${location.latitude}, ${location.longitude}'),
+                                '${location.latitude}, ${location.longitude}',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: MyTheme.primaryColor),
+                              ),
                               subtitle: Text(
-                                  'Fecha: ${location.timestamp.toIso8601String()}\n${location.precision.toUpperCase()}'),
+                                '${myDateFormat.format(location.timestamp)}\n${location.precision.toUpperCase()}',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: MyTheme.darkColor),
+                              ),
                               trailing: IconButton(
                                 onPressed: () {
                                   // TO DO: elimina la ubicacion [location] usando el controlador [deleteLocation]

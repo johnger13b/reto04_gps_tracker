@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class MyTheme {
-  static const Color primaryColor = Color(0xffeb5e28);
-  static const Color secondaryColor = Color(0xff00aa65);
-  static const Color tertiaryColor = Color(0xffccc5b9);
-  static const Color lightPrimaryColor = Color(0xffffe5d9);
-  static const Color lightTertiaryColor = Color(0xfffffcf2);
-  static const Color darkColor = Color(0xff252422);
+  static const Color primaryColor = Color(0xff009476);
+  static const Color secondaryColor = Color(0xffffc40c);
+  static const Color tertiaryColor = Color(0xffbbe2c9);
+  static const Color lightPrimaryColor = Color(0xffd3d7dc);
+  static const Color lightTertiaryColor = Color(0xffF1EFDC);
+  static const Color darkColor = Color(0xff141c14);
+  static const Color white = Color(0xffffffff);
 
   static final ThemeData theme = ThemeData(
     primaryColor: primaryColor,
@@ -17,7 +18,10 @@ class MyTheme {
       elevation: 0,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(backgroundColor: primaryColor),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: primaryColor,
+        textStyle: const TextStyle(fontSize: 19),
+      ),
     ),
   );
 }

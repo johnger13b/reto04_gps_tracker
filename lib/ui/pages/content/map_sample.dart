@@ -28,10 +28,15 @@ class MapSampleState extends State<MapSample> {
 
   @override
   Widget build(BuildContext context) {
-    print('Lat: ${widget.lat} - Lon: ${widget.lon}');
     return GoogleMap(
       mapType: MapType.normal,
       initialCameraPosition: initialLocation,
+      markers: {
+        Marker(
+          markerId: const MarkerId('mark'),
+          position: LatLng(widget.lat, widget.lon),
+        ),
+      },
       onMapCreated: (GoogleMapController controller) {
         _controller.complete(controller);
       },
