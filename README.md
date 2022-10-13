@@ -1,13 +1,19 @@
-# f_gps_tracker
+# Reto #4
 
-Un template para una aplicación de registro de ubicación usando la Hive y GeoLocator
+ELa meta es completar el proyecto base para lograr una aplicación que almacene la localización del usuario a petición del mismo en una base de datos local.
 
-Video: https://uninorte-my.sharepoint.com/:v:/g/personal/sastoquek_uninorte_edu_co/EZXEAMfBezFBo72vHb8QekUBup2-X97GABWyk_9XPiH0nA?e=YgUBV0
+## Lógica
 
-Funcional con Android, iOS y Web
+una vez el usuario da el permisos al menos por una ya por medio del boton registrar hubicacion esta quedara registrada en una lista
+donde se puede ver dicha ubicacion en un mapa al pulsar VER y si se decea borrar se pulsa al icono correspondiente o al boton eliminar todos
+si se quiere borrar todos los registros.
 
-![Tracker](https://user-images.githubusercontent.com/25647254/192416251-fdae4ea5-3149-4c08-bd3b-b37e23c48f34.gif)
+## Link de repositorio
 
-Solución:
+https://github.com/johnger13b/reto04_gps_tracker.git
 
-https://github.com/MisionTIC4b/f_gps_tracker
+## Video de Explicación
+
+
+https://user-images.githubusercontent.com/111591094/195471852-9afddb84-361a-412a-a2e0-f8195607f518.mp4
+
